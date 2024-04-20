@@ -5,3 +5,7 @@ export const saveSubscription = (subscription: PushSubscription) => {
 };
 
 export const getSubscriptions = () => Array.from(subscriptions);
+
+export const clearSubscription = () => {
+  subscriptions.clear();
+};

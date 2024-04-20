@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 
-import { saveSubscription } from "../utils/db";
+import { clearSubscription, saveSubscription } from "../utils/db";
 
 export const subscribe = (req: Request, res: Response): void => {
   const subscription = req.body;
@@ -9,7 +9,17 @@ export const subscribe = (req: Request, res: Response): void => {
     saveSubscription(subscription as PushSubscription);
     res.status(201).json({ message: "Subscription saved" });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Failed to save subscription" });
+  }
+};
+
+export const resetSubscribe = (req: Request, res: Response): void => {
+  const subscription = req.body;
+
+  try {
+    clearSubscription();
+    res.status(201).json({ message: "Subscription remove" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to remove subscription" });
   }
 };
