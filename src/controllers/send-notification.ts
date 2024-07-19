@@ -6,10 +6,10 @@ import { getSubscriptions } from "../utils/db";
 
 const publicVapidKey =
   process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ||
-  "BF5MvKh6kyf4_Ip1FnuaXcZBfozwBwn2zTFbqvRBSgh9P1YqKNl6oUGmXZyhGi_jgDVeE9wrHgizR4-G52KU60g";
+  "BGSdmkjWeguxWi_RtxA9d0i4D6NLGEQhTUuwnKeEmBbE0dLAbgbJK-F-Li3hhZ9OiqOqrxgFWqrKzZVosqRE9QA";
 const privateVapidKey =
   process.env.VAPID_PRIVATE_KEY ||
-  "VlH_tqQSYh1rEOR0W4Ub-csvc9U_JhSWX45EBYND3YQ";
+  "T96JoRtRbIh00CMsW2VyrtwdAbdUgaXPfpyGw7DavOU";
 
 webPush.setVapidDetails(
   "mailto:wkdaudwn1028@gmail.com",
@@ -26,9 +26,9 @@ export const sendNotification = (req: Request, res: Response): void => {
         // @ts-ignore
         webPush.sendNotification(subscription, JSON.stringify(req.body))
       )
-    ).then(() =>
-      res.status(200).json({ message: "Notification sent successfully." })
-    );
+    ).then(() => {
+      res.status(200).json({ message: "Notification sent successfully." });
+    });
   } catch (error) {
     res.status(500).json({ message: "Failed to send push notifications" });
   }

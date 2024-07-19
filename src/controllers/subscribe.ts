@@ -13,7 +13,7 @@ export const subscribe = (req: Request, res: Response): void => {
   }
 };
 
-export const resetSubscribe = (req: Request, res: Response): void => {
+export const unsubscribe = (req: Request, res: Response): void => {
   const subscription = req.body;
 
   try {

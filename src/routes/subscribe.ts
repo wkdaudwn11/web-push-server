@@ -1,9 +1,9 @@
 import express from "express";
-import { subscribe, resetSubscribe } from "../controllers/subscribe";
+import { subscribe, unsubscribe } from "../controllers/subscribe";
 
 const router = express.Router();
 
 router.post("/", subscribe);
-router.delete("/", resetSubscribe);
+router.delete("/", unsubscribe);
 
 export default router;
